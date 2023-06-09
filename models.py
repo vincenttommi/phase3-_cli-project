@@ -124,7 +124,7 @@ if __name__ == '__main__':
         elif choice == '2':
             # Assigning an Instructor to a user
             pass
-# assiging a user exercise
+
         elif choice == '3':
             user_id = input("Enter User ID: ")
             exercise_name = input("Enter exercise name: ")
@@ -146,8 +146,6 @@ if __name__ == '__main__':
                 print("Exercise added for user successfully!")
             else:
                 print("User not found!")
-            
-            # updating exercises
 
         elif choice == '4':
             exercise_id = input("Enter Exercise ID: ")
@@ -168,8 +166,7 @@ if __name__ == '__main__':
                 print("Exercise updated successfully")
             else:
                 print("Exercise not found")
-
-                # generating report
+                
 
         elif choice == '5':
             user_id = input("Enter User ID: ")
@@ -191,55 +188,50 @@ if __name__ == '__main__':
                 print(report)
             else:
                 print("User not found!")
-
-
+                
         elif  choice  == '6':
-                user_id = input("Enter User ID : ")
-                user = session.query(User).filter_by(id=user_id).first()
+                    user_id = input("Enter User ID : ")
+                    user = session.query(User).filter_by(id=user_id).first()
 
-                if user:
-                    session.delete(user)
-                    session.commit()
-                    print("user successfully deleted")
-                else:
-                    print("user not found")
+                    if user:
+                     session.delete(user)
+                     session.commit()
+                     print("user successfully deleted")
+                    else:
+                     print("user not found")
+                     
+                     
+                  # updating instructor details
+        elif choice == '14':
+                    instructor_id = input("Enter instructor ID: ")
+                    instructor = session.query(Instructor).filter_by(id=instructor_id).first()
 
-# updating instructor details
-        elif choice  == '14':
-            instructor_id =  input("Enter instructor ID")
-            instructor  = session.query(Instructor).filter_by(id=instructor_id).first()
+                    if instructor:
+                        instructor_name = input("Enter instructor name: ")
+                        instructor_email = input("Enter instructor email: ")
+                        instructor_specialization = input("Enter instructor specialization: ")
+                        instructor_password = input("Enter instructor password: ")
+                        instructor_experience = input("Enter instructor experience: ")
 
-        if instructor:
-            instructor_name  = input("Enter instructor name :")
-            instructor_email = input("Enter instructor email :")
-            instructor_specialization = input("Enter instructor specialization :")
-            instructor_password = input("Enter instructor password :")
-            instructor_experience = input("Enter instructor experience")
+                        # Updating the instructor instance with new data
+                        instructor.name = instructor_name
+                        instructor.email = instructor_email
+                        instructor.specialization = instructor_specialization
+                        instructor.password = instructor_password
+                        instructor.experience = instructor_experience
 
-        #creating instance of the data
-            instructor = instructor_name  = instructor_name
-            instructor = instructor_email = instructor_email
-            instructor = instructor_specialization = instructor_specialization
-            instructor  =  instructor_password  = instructor_password
-            instructor =  instructor_experience  = instructor_experience
+                        # committing the session
+                        session.commit()
 
-        # committing the session
+                        print("Instructor updated successfully")
+                    else:
+                        print("Instructor not found")
 
-            session.commit()
-            print("Instructor updated successfully")
-        else:
-            print("instructor not updated")
-
-
-
-
-
-
+        
+   
 
 
-            
-    
-        elif  choice == '19':
+        elif choice == '19':
             break
 
-session.close()
+    session.close()
